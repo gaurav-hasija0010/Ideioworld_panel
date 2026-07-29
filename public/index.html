@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ideioworld Panel</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand" title="Ideioworld">
+        <img class="brand-logo" src="/img/logo.png" alt="Ideioworld"
+             onload="this.style.display='block'; this.closest('.brand').classList.add('has-logo')"
+             onerror="this.remove()" />
+        <span class="brand-text">
+          <span class="mark">🌐</span>
+          <span class="word"><b class="w1">ideio</b><b class="w2">world</b></span>
+        </span>
+      </div>
+      <div class="nav-item active" data-view="dashboard"><span class="ic">📊</span> Dashboard</div>
+      <div class="nav-item" data-view="business"><span class="ic">🏬</span> Business Data</div>
+      <div class="nav-item" data-view="mobile_hut"><span class="ic">📱</span> Mobile Hut</div>
+      <div class="sidebar-footer">
+        <div class="who" id="whoami">Signed in</div>
+        <button class="btn ghost sm block" id="logoutBtn">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main" id="main"><!-- rendered by app.js --></main>
+  </div>
+
+  <!-- Record form modal -->
+  <div class="modal-back" id="formModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="formTitle">Add record</h2>
+        <button class="x" data-close>✕</button>
+      </div>
+      <form id="recordForm">
+        <div class="modal-body">
+          <div class="form-grid" id="formFields"></div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn ghost" data-close>Cancel</button>
+          <button type="submit" class="btn" id="saveBtn">Save record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Detail modal -->
+  <div class="modal-back" id="detailModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="detailTitle">Record</h2>
+        <button class="x" data-close>✕</button>
+      </div>
+      <div class="modal-body" id="detailBody"></div>
+      <div class="modal-foot">
+        <button type="button" class="btn ghost" data-close>Close</button>
+        <button type="button" class="btn" id="detailEditBtn">Edit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
