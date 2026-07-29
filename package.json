@@ -1,0 +1,17 @@
+{
+  "name": "ideioworld-panel",
+  "version": "1.0.0",
+  "description": "Ideioworld local system for marketing & business data collection (Business + Mobile Hut)",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch src/server.js"
+  },
+  "author": "Ideioworld",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

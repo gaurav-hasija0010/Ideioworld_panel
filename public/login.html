@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ideioworld · Login</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="login-card" id="loginForm">
+      <div class="brand" title="Ideioworld">
+        <img class="brand-logo" src="/img/logo.png" alt="Ideioworld" style="max-height:56px"
+             onload="this.style.display='block'; this.closest('.brand').classList.add('has-logo')"
+             onerror="this.remove()" />
+        <span class="brand-text">
+          <span class="mark">🌐</span>
+          <span class="word"><b class="w1">ideio</b><b class="w2">world</b></span>
+        </span>
+      </div>
+      <p class="login-sub">Discover the World Around You</p>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required autofocus />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+      </div>
+      <div class="error-msg" id="err"></div>
+      <button class="btn block" type="submit">Sign in</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const err = document.getElementById('err');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.textContent = '';
+      const body = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
+      };
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) { window.location.href = '/'; }
+        else {
+          const d = await res.json().catch(() => ({}));
+          err.textContent = d.error || 'Login failed';
+        }
+      } catch (_) { err.textContent = 'Could not reach server'; }
+    });
+  </script>
+</body>
+</html>
